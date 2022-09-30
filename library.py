@@ -42,13 +42,13 @@ class Library:
 
     def ingestLog(self, log):
         if log.type == "info":
-            self.infos.append(log)
+            self.infos.append(log.__dict__)
         elif log.type == "warning":
-            self.warnings.append(log)
+            self.warnings.append(log.__dict__)
         elif log.type == "error":
-            self.errors.append(log)
+            self.errors.append(log.__dict__)
         else:
-            self.others.append(log)
+            self.others.append(log.__dict__)
     
     def ingestLogStream(self, filePath):
         cntr = 0
@@ -58,3 +58,6 @@ class Library:
                 self.ingestLog(tmp)
                 cntr += 1
         print(f"Ingested {cntr} logs from {filePath}.")
+    
+    def getErrors(self):
+        return self.errors
