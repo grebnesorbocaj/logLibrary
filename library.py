@@ -1,4 +1,4 @@
-from json import JSONDecoder, dumps
+from json import dumps
 
 """ 
 assumption of uniform log messages in format: 
